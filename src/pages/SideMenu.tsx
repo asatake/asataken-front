@@ -100,7 +100,7 @@ class SideMenu extends React.Component<
         <ListItem button={true}>
           <ListItemIcon>
             <Home />
-          </ListItemIcon>TopMenu
+          </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
         <ListItem button={true} value={1}>
