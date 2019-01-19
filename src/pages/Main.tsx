@@ -76,7 +76,7 @@ class Main extends React.Component<
   }
 
   public title(item: number) {
-    const prefix: string = "asatakecom / ";
+    const prefix: string = "asataken / ";
     if (item === 1) {
       return prefix + "Sounds";
     } else if (item === 2) {
