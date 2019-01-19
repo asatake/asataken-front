@@ -71,7 +71,7 @@ class Main extends React.Component<
     } else if (item === 3) {
       return <About />;
     } else {
-      return <Top />;
+      return <Top changePage={this.changePage} />;
     }
   }
 
