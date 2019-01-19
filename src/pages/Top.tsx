@@ -96,9 +96,10 @@ class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
             variant="extended"
             color="primary"
             onClick={(e: any) => this.props.changePage(e, 1)}
+            disabled={true}
           >
             <MusicNote />
-            Sounds
+            Sounds (工事中)
           </Fab>
         </div>
       </div>
