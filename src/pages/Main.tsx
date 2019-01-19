@@ -20,7 +20,7 @@ interface IMenuState {
 
 type ClassNames = keyof typeof styles;
 
-const drawerWidth = 180;
+const drawerWidth = 240;
 const drawerShiftWidth = 60;
 const styles = {
   root: {
@@ -38,13 +38,13 @@ const styles = {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transitionDuration: "0.3s",
-    transitionTimingFunction: "ease",
+    transitionTimingFunction: "ease"
   },
   contentClose: {
     width: `calc(100% - ${drawerShiftWidth}px)`,
     marginLeft: drawerShiftWidth,
     transitionDuration: "0.3s",
-    transitionTimingFunction: "ease",
+    transitionTimingFunction: "ease"
   }
 };
 
@@ -56,7 +56,7 @@ class Main extends React.Component<
     super(props);
     this.state = {
       item: 0,
-      open: false
+      open: true
     };
     this.changePage = this.changePage.bind(this);
     this.handleDrawer = this.handleDrawer.bind(this);
@@ -76,14 +76,15 @@ class Main extends React.Component<
   }
 
   public title(item: number) {
+    const prefix: string = "asatakecom / ";
     if (item === 1) {
-      return "Sounds";
+      return prefix + "Sounds";
     } else if (item === 2) {
-      return "Works";
+      return prefix + "Works";
     } else if (item === 3) {
-      return "About";
+      return prefix + "About";
     } else {
-      return "Top";
+      return prefix + "Top";
     }
   }
 

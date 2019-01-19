@@ -35,7 +35,7 @@ interface ISideMenuState {
 
 type ClassNames = keyof typeof styles;
 
-const drawerWidth = 180;
+const drawerWidth = 240;
 const drawerShiftWidth = 60;
 const styles = {
   root: {
