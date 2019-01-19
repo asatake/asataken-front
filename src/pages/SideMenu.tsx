@@ -23,13 +23,14 @@ import classNames from "classnames";
 
 interface ISideMenuProps {
   item: number;
+  open: boolean;
   title: string;
   changePage: (event: any, item: number) => void;
+  handleDrawer: () => void;
 }
 
 interface ISideMenuState {
   value: number;
-  open: boolean;
 }
 
 type ClassNames = keyof typeof styles;
@@ -53,13 +54,16 @@ const styles = {
   },
   drawerOpen: {
     width: drawerWidth,
-    zIndex: 2
+    zIndex: 2,
+    transitionDuration: "0.3s",
+    transitionTimingFunction: "ease"
   },
   drawerClose: {
     overflowX: "hidden",
     width: drawerShiftWidth,
-    zIndex: 2
-    // width: theme.spacing.unit * 7 + 1
+    zIndex: 2,
+    transitionDuration: "0.3s",
+    transitionTimingFunction: "ease"
   },
   navList: {
     paddingTop: "4.5em",
@@ -71,51 +75,37 @@ class SideMenu extends React.Component<
   ISideMenuProps & WithStyles<ClassNames>,
   ISideMenuState
 > {
-  constructor(props: ISideMenuProps & WithStyles<ClassNames>) {
-    super(props);
-    this.state = {
-      value: 0,
-      open: false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleDrawer = this.handleDrawer.bind(this);
-  }
-
   public handleChange(event: React.FormEvent, value: number) {
     this.props.changePage(event, value);
-  }
-
-  public handleDrawer(event: React.FormEvent) {
-    this.setState({ open: !this.state.open });
   }
 
   public navLists() {
     const classes = this.props.classes;
     return (
       <List component="nav" className={classes.navList}>
-        <ListItem button={true} onClick={this.handleDrawer}>
-          {this.state.open ? <ChevronLeft /> : <ChevronRight />}
+        <ListItem button={true} onClick={this.props.handleDrawer}>
+          {this.props.open ? <ChevronLeft /> : <ChevronRight />}
         </ListItem>
         <Divider />
-        <ListItem button={true}>
+        <ListItem button={true} onClick={e => this.handleChange(e, 0)}>
           <ListItemIcon>
             <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button={true} value={1}>
+        <ListItem button={true} onClick={e => this.handleChange(e, 1)}>
           <ListItemIcon>
             <MusicNote />
           </ListItemIcon>
           <ListItemText primary="Sounds" />
         </ListItem>
-        <ListItem button={true} value={2}>
+        <ListItem button={true} onClick={e => this.handleChange(e, 2)}>
           <ListItemIcon>
             <Work />
           </ListItemIcon>
           <ListItemText primary="Works" />
         </ListItem>
-        <ListItem button={true} value={3}>
+        <ListItem button={true} onClick={e => this.handleChange(e, 3)}>
           <ListItemIcon>
             <Info />
           </ListItemIcon>
@@ -130,17 +120,17 @@ class SideMenu extends React.Component<
     return (
       <div>
         <Drawer
-          open={this.state.open}
+          open={this.props.open}
           anchor="left"
           variant="permanent"
           className={classNames(classes.drawer, {
-            [classes.drawerOpen]: this.state.open,
-            [classes.drawerClose]: !this.state.open
+            [classes.drawerOpen]: this.props.open,
+            [classes.drawerClose]: !this.props.open
           })}
           classes={{
             paper: classNames({
-              [classes.drawerOpen]: this.state.open,
-              [classes.drawerClose]: !this.state.open
+              [classes.drawerOpen]: this.props.open,
+              [classes.drawerClose]: !this.props.open
             })
           }}
         >
