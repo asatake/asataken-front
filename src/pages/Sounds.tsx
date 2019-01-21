@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Paper, Typography } from "@material-ui/core";
+import { Card, Typography } from "@material-ui/core";
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface ISoundsProps extends RouteComponentProps<{}> {}
@@ -8,11 +8,11 @@ class Sounds extends React.Component<ISoundsProps, {}> {
   public render() {
     return (
       <div>
-        <Paper>
-          <Typography variant="overline" component="p">
-            準備中
+        <Card>
+          <Typography variant="h6" component="p">
+            準備中です。更新をお待ちください。
           </Typography>
-        </Paper>
+        </Card>
       </div>
     );
   }
