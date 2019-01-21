@@ -40,6 +40,24 @@ class About extends React.Component<IAboutProps, IAboutState> {
     this.changeTab = this.changeTab.bind(this);
   }
 
+  public about() {
+    return (
+      <Card>
+        <List>
+          <ListItem>
+            <ListItemText primary="このサイトはBGM素材・効果音素材などの音の素材を配布しているサイト、管理人が個人で運営しています。" />            
+          </ListItem>
+          <ListItem>
+            <ListItemText primary="音楽によって作品の幅を広げたいクリエイターの方を応援しています。" />
+          </ListItem>
+          <ListItem>
+          <ListItemText primary="また、単に素材としてだけでなく、「聴いて」楽しめる音楽づくりを目指しています。" />
+          </ListItem>
+        </List>
+      </Card>
+    );
+  }
+
   public profile() {
     return (
       <Card>
@@ -116,11 +134,13 @@ class About extends React.Component<IAboutProps, IAboutState> {
           indicatorColor="primary"
           textColor="primary"
         >
+          <Tab label="このサイトについて" />
           <Tab label="プロフィール" />
           <Tab label="利用規約" />
         </Tabs>
-        {this.state.tabItem === 0 && <Card>{this.profile()}</Card>}
-        {this.state.tabItem === 1 && <Card>{this.agreement()}</Card>}
+        {this.state.tabItem === 0 && <Card>{this.about()}</Card>}
+        {this.state.tabItem === 1 && <Card>{this.profile()}</Card>}
+        {this.state.tabItem === 2 && <Card>{this.agreement()}</Card>}
       </div>
     );
   }
