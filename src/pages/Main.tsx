@@ -1,6 +1,7 @@
 import * as React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
 import { theme } from "../theme";
-import { MuiThemeProvider, CssBaseline, Hidden } from "@material-ui/core";
+import { MuiThemeProvider, Hidden } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Top from "./Top";
 import Sounds from "./Sounds";
@@ -63,18 +64,6 @@ class Main extends React.Component<
     this.content = this.content.bind(this);
   }
 
-  public route(item: number) {
-    if (item === 1) {
-      return <Sounds />;
-    } else if (item === 2) {
-      return <Works />;
-    } else if (item === 3) {
-      return <About />;
-    } else {
-      return <Top changePage={this.changePage} />;
-    }
-  }
-
   public title(item: number) {
     const prefix: string = "asataken / ";
     if (item === 1) {
@@ -93,8 +82,14 @@ class Main extends React.Component<
 
     return (
       <div className={classes.content}>
-        <CssBaseline />
-        {this.route(this.state.item)}
+        <Route
+          exact={true}
+          path="/"
+          render={props => <Top changePage={this.changePage} />}
+        />
+        <Route path="/sounds" component={Sounds} />
+        <Route path="/works" component={Works} />
+        <Route path="/about" component={About} />
       </div>
     );
   }
@@ -110,34 +105,34 @@ class Main extends React.Component<
   public render() {
     const classes = this.props.classes;
     return (
-      <div style={{ marginTop: "5em", marginBottom: "5em" }}>
-        <MuiThemeProvider theme={theme}>
-          <Hidden mdUp={true}>
-            <CssBaseline />
-            {this.content()}
-            <TopBar title={this.title(this.state.item)} />
-            <BottomMenu item={this.state.item} changePage={this.changePage} />
-          </Hidden>
-          <Hidden smDown={true}>
-            <CssBaseline />
-            <div
-              className={classNames(classes.body, {
-                [classes.contentOpen]: this.state.open,
-                [classes.contentClose]: !this.state.open
-              })}
-            >
+      <BrowserRouter>
+        <div style={{ marginTop: "5em", marginBottom: "5em" }}>
+          <MuiThemeProvider theme={theme}>
+            <Hidden mdUp={true}>
               {this.content()}
-            </div>
-            <SideMenu
-              item={this.state.item}
-              open={this.state.open}
-              title={this.title(this.state.item)}
-              changePage={this.changePage}
-              handleDrawer={this.handleDrawer}
-            />
-          </Hidden>
-        </MuiThemeProvider>
-      </div>
+              <TopBar title={this.title(this.state.item)} />
+              <BottomMenu item={this.state.item} changePage={this.changePage} />
+            </Hidden>
+            <Hidden smDown={true}>
+              <div
+                className={classNames(classes.body, {
+                  [classes.contentOpen]: this.state.open,
+                  [classes.contentClose]: !this.state.open
+                })}
+              >
+                {this.content()}
+              </div>
+              <SideMenu
+                item={this.state.item}
+                open={this.state.open}
+                title={this.title(this.state.item)}
+                changePage={this.changePage}
+                handleDrawer={this.handleDrawer}
+              />
+            </Hidden>
+          </MuiThemeProvider>
+        </div>
+      </BrowserRouter>
     );
   }
 }

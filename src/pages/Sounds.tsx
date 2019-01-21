@@ -1,7 +1,10 @@
 import * as React from "react";
 import { Paper, Typography } from "@material-ui/core";
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-class Sounds extends React.Component {
+interface ISoundsProps extends RouteComponentProps<{}> {}
+
+class Sounds extends React.Component<ISoundsProps, {}> {
   public render() {
     return (
       <div>
@@ -15,4 +18,4 @@ class Sounds extends React.Component {
   }
 }
 
-export default Sounds;
+export default withRouter(Sounds);

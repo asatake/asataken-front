@@ -12,6 +12,7 @@ import {
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
 import { MusicNote } from "@material-ui/icons";
+import { withRouter, RouteComponentProps } from 'react-router';
 
 type ClassName = keyof typeof styles;
 
@@ -36,11 +37,24 @@ const styles = {
   }
 };
 
-interface ITopProps {
+interface ITopProps extends RouteComponentProps<{}> {
   changePage: (event: any, item: number) => void;
 }
 
 class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
+  public handleHistory(event: any, item: number) {
+    if (item === 1) {
+      this.props.history.push("/sounds");
+    } else if (item === 2) {
+      this.props.history.push("/works");
+    } else if (item === 3) {
+      this.props.history.push("/about");
+    } else {
+      this.props.history.push("/");
+    }
+    this.props.changePage(event, item);
+  }
+
   public render() {
     const classes = this.props.classes;
     return (
@@ -95,7 +109,7 @@ class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
           <Fab
             variant="extended"
             color="primary"
-            onClick={(e: any) => this.props.changePage(e, 1)}
+            onClick={(e: any) => this.handleHistory(e, 1)}
             disabled={true}
           >
             <MusicNote />
@@ -107,4 +121,4 @@ class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
   }
 }
 
-export default withStyles(styles)(Top);
+export default withStyles(styles)(withRouter(Top));

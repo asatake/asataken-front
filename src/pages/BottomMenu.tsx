@@ -2,15 +2,14 @@ import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core/";
 import { Home, MusicNote, Work, Info } from "@material-ui/icons";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface IBottomMenuProps {
+interface IBottomMenuProps extends RouteComponentProps<{}> {
   item: number;
   changePage: (event: any, item: number) => void;
 }
 
-interface IBottomMenuState {
-  value: number;
-}
+interface IBottomMenuState {}
 
 const styles = {
   root: {
@@ -19,23 +18,24 @@ const styles = {
 };
 
 class BottomMenu extends React.Component<IBottomMenuProps, IBottomMenuState> {
-  constructor(props: IBottomMenuProps) {
-    super(props);
-    this.state = {
-      value: 0
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  public handleChange(event: any, value: number) {
-    this.props.changePage(event, value);
+  public handleHistory(event: any, item: number) {
+    if (item === 1) {
+      this.props.history.push("/sounds");
+    } else if (item === 2) {
+      this.props.history.push("/works");
+    } else if (item === 3) {
+      this.props.history.push("/about");
+    } else {
+      this.props.history.push("/");
+    }
+    this.props.changePage(event, item);
   }
 
   public render() {
     return (
       <BottomNavigation
         value={this.props.item}
-        onChange={this.handleChange}
+        onChange={(e, v) => this.handleHistory(e, v)}
         showLabels={true}
         style={{
           width: "100%",
@@ -55,4 +55,4 @@ class BottomMenu extends React.Component<IBottomMenuProps, IBottomMenuState> {
   }
 }
 
-export default withStyles(styles)(BottomMenu);
+export default withStyles(styles)(withRouter(BottomMenu));

@@ -20,8 +20,9 @@ import {
   ChevronRight
 } from "@material-ui/icons";
 import classNames from "classnames";
+import { RouteComponentProps, withRouter } from "react-router";
 
-interface ISideMenuProps {
+interface ISideMenuProps extends RouteComponentProps<{}> {
   item: number;
   open: boolean;
   title: string;
@@ -66,7 +67,7 @@ const styles = {
     transitionTimingFunction: "ease"
   },
   navList: {
-    paddingTop: "4.5em",
+    paddingTop: "4em",
     zIndex: 2
   }
 };
@@ -75,8 +76,17 @@ class SideMenu extends React.Component<
   ISideMenuProps & WithStyles<ClassNames>,
   ISideMenuState
 > {
-  public handleChange(event: React.FormEvent, value: number) {
-    this.props.changePage(event, value);
+  public handleHistory(event: any, item: number) {
+    if (item === 1) {
+      this.props.history.push("/sounds");
+    } else if (item === 2) {
+      this.props.history.push("/works");
+    } else if (item === 3) {
+      this.props.history.push("/about");
+    } else {
+      this.props.history.push("/");
+    }
+    this.props.changePage(event, item);
   }
 
   public navLists() {
@@ -87,25 +97,25 @@ class SideMenu extends React.Component<
           {this.props.open ? <ChevronLeft /> : <ChevronRight />}
         </ListItem>
         <Divider />
-        <ListItem button={true} onClick={e => this.handleChange(e, 0)}>
+        <ListItem button={true} onClick={e => this.handleHistory(e, 0)}>
           <ListItemIcon>
             <Home />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button={true} onClick={e => this.handleChange(e, 1)}>
+        <ListItem button={true} onClick={e => this.handleHistory(e, 1)}>
           <ListItemIcon>
             <MusicNote />
           </ListItemIcon>
           <ListItemText primary="Sounds" />
         </ListItem>
-        <ListItem button={true} onClick={e => this.handleChange(e, 2)}>
+        <ListItem button={true} onClick={e => this.handleHistory(e, 2)}>
           <ListItemIcon>
             <Work />
           </ListItemIcon>
           <ListItemText primary="Works" />
         </ListItem>
-        <ListItem button={true} onClick={e => this.handleChange(e, 3)}>
+        <ListItem button={true} onClick={e => this.handleHistory(e, 3)}>
           <ListItemIcon>
             <Info />
           </ListItemIcon>
@@ -154,5 +164,5 @@ class SideMenu extends React.Component<
 }
 
 export default withStyles<{} & ClassNames>(styles, { withTheme: true })(
-  SideMenu
+  withRouter(SideMenu)
 );
