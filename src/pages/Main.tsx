@@ -64,19 +64,6 @@ class Main extends React.Component<
     this.content = this.content.bind(this);
   }
 
-  public title(item: number) {
-    const prefix: string = "asataken / ";
-    if (item === 1) {
-      return prefix + "Sounds";
-    } else if (item === 2) {
-      return prefix + "Works";
-    } else if (item === 3) {
-      return prefix + "About";
-    } else {
-      return prefix + "Top";
-    }
-  }
-
   public content() {
     const classes = this.props.classes;
 
@@ -92,6 +79,19 @@ class Main extends React.Component<
         <Route path="/about" component={About} />
       </div>
     );
+  }
+
+  public title(location: string) {
+    const prefix = "asataken / ";
+    if (location === "/sounds") {
+      return prefix + "Sounds";
+    } else if (location === "/works") {
+      return prefix + "Works";
+    } else if (location === "/about") {
+      return prefix + "About";
+    } else {
+      return prefix + "Top";
+    }
   }
 
   public changePage(event: any, item: number) {
@@ -110,7 +110,7 @@ class Main extends React.Component<
           <MuiThemeProvider theme={theme}>
             <Hidden mdUp={true}>
               {this.content()}
-              <TopBar title={this.title(this.state.item)} />
+              <TopBar title={this.title} />
               <BottomMenu item={this.state.item} changePage={this.changePage} />
             </Hidden>
             <Hidden smDown={true}>
@@ -125,7 +125,7 @@ class Main extends React.Component<
               <SideMenu
                 item={this.state.item}
                 open={this.state.open}
-                title={this.title(this.state.item)}
+                title={this.title}
                 changePage={this.changePage}
                 handleDrawer={this.handleDrawer}
               />

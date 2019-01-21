@@ -25,7 +25,7 @@ import { RouteComponentProps, withRouter } from "react-router";
 interface ISideMenuProps extends RouteComponentProps<{}> {
   item: number;
   open: boolean;
-  title: string;
+  title: (location: string) => string;
   changePage: (event: any, item: number) => void;
   handleDrawer: () => void;
 }
@@ -154,7 +154,7 @@ class SideMenu extends React.Component<
               color="inherit"
               noWrap={true}
             >
-              {this.props.title}
+              {this.props.title(this.props.location.pathname)}
             </Typography>
           </Toolbar>
         </AppBar>
