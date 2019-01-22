@@ -18,7 +18,7 @@ import {
   Forum
 } from "@material-ui/icons";
 import MdiIcon from "@mdi/react";
-import { mdiTwitter } from "@mdi/js";
+import { mdiTwitter, mdiSoundcloud } from "@mdi/js";
 import { deepOrange } from "@material-ui/core/colors";
 
 interface IAboutProps {}
@@ -82,6 +82,16 @@ class About extends React.Component<IAboutProps, IAboutState> {
           >
             <MdiIcon path={mdiTwitter} size="1.5em" color="#1da1f2" />
             <ListItemText secondary="@Mush_asatake" />
+          </ListItem>
+          <Divider />
+          <ListItem
+            button={true}
+            component="a"
+            href="https://soundcloud.com/mush_asatake"
+            target="blank"
+          >
+            <MdiIcon path={mdiSoundcloud} size="1.5em" color="#ff3300" />
+            <ListItemText secondary="mush_asatake" />
           </ListItem>
         </List>
       </Card>
