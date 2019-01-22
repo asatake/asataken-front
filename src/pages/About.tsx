@@ -13,7 +13,9 @@ import {
   Person,
   Cake,
   Warning,
-  SentimentSatisfiedAlt
+  Mood,
+  Public,
+  Forum
 } from "@material-ui/icons";
 import MdiIcon from "@mdi/react";
 import { mdiTwitter } from "@mdi/js";
@@ -45,13 +47,13 @@ class About extends React.Component<IAboutProps, IAboutState> {
       <Card>
         <List>
           <ListItem>
-            <ListItemText primary="このサイトはBGM素材・効果音素材などの音の素材を配布しているサイト、管理人が個人で運営しています。" />            
+            <ListItemText primary="このサイトはBGM素材・効果音素材などの音の素材を配布しているサイト、管理人が個人で運営しています。" />
           </ListItem>
           <ListItem>
             <ListItemText primary="音楽によって作品の幅を広げたいクリエイターの方を応援しています。" />
           </ListItem>
           <ListItem>
-          <ListItemText primary="また、単に素材としてだけでなく、「聴いて」楽しめる音楽づくりを目指しています。" />
+            <ListItemText primary="また、単に素材としてだけでなく、「聴いて」楽しめる音楽づくりを目指しています。" />
           </ListItem>
         </List>
       </Card>
@@ -91,21 +93,26 @@ class About extends React.Component<IAboutProps, IAboutState> {
       {
         text:
           "当サイト内の作品は、販売中のものを除きフリー素材としてご利用いただいて構いませんが、著作権はすべて管理人に帰属します。",
-        icon: <Warning />
+        icon: <Public color="inherit" />
       },
       {
         text:
-          "利用報告は任意です。ただし、ご報告を頂いた際は宣伝等がしやすくなりますので、ぜひお気軽にご連絡ください。",
-        icon: <SentimentSatisfiedAlt />
+          "フリー素材の商用利用の場合、メールもしくはTwitterのDMにてご連絡いただいて初めて無料でご利用いただけます。",
+        icon: <Forum />
+      },
+      {
+        text:
+          "非商用の場合、利用報告は任意です。ただし、ご報告を頂いた際は宣伝等がしやすくなりますので、ぜひお気軽にご連絡ください。",
+        icon: <Mood />
       },
       {
         text: "楽曲の第三者への再配布、転売などはしないでください。",
-        icon: <Warning />
+        icon: <Warning color="error" />
       },
       {
         text:
           "当サイト内の作品の使用により損害・損失が発生しましても、当方は一切の責任を負いません。ご了承ください。",
-        icon: <Warning />
+        icon: <Warning color="error" />
       }
     ];
 
