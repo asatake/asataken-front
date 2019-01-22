@@ -1,18 +1,10 @@
 import * as React from "react";
-import {
-  Typography,
-  Card,
-  Divider,
-  List,
-  ListItem,
-  ListItemText,
-  CardContent,
-  Fab
-} from "@material-ui/core";
+import { Typography, Card, Divider, CardContent, Fab } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import { deepOrange } from "@material-ui/core/colors";
 import { MusicNote } from "@material-ui/icons";
-import { withRouter, RouteComponentProps } from 'react-router';
+import { withRouter, RouteComponentProps } from "react-router";
+import News from "../components/News";
 
 type ClassName = keyof typeof styles;
 
@@ -92,15 +84,7 @@ class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
             </Typography>
           </CardContent>
           <Divider variant="middle" />
-          <List>
-            <ListItem>
-              <ListItemText primary="test" secondary="2018/02/01" />
-            </ListItem>
-            <Divider />
-            <ListItem>
-              <ListItemText primary="test2" secondary="2018/01/01" />
-            </ListItem>
-          </List>
+          <News />
         </Card>
         <div className={classes.subContent}>
           <Typography variant="h6" component="h3">
