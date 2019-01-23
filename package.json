@@ -11,15 +11,17 @@
     "@types/react-router-dom": "^4.3.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "enzyme": "^3.8.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "3.1.0"
+    "react-scripts-ts": "3.1.0",
+    "react-test-renderer": "^16.7.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom",
+    "test": "react-scripts-ts test --env=jsdom --coverage",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
