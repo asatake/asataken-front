@@ -1,10 +1,11 @@
 import * as React from "react";
 import { configure, shallow } from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import Main from "../pages/Main";
+import BottomMenu from "../pages/BottomMenu";
 
 configure({ adapter: new Adapter() });
 
 it("renders without crashing", () => {
-  shallow(<Main />);
+  const changePage = jest.fn();
+  shallow(<BottomMenu item={0} changePage={changePage} />);
 });
