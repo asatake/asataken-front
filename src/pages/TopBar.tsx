@@ -1,7 +1,7 @@
 import * as React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core/";
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps, withRouter } from "react-router";
 
 interface ITopMenuProps extends RouteComponentProps<{}> {
   title: (location: string) => string;
@@ -10,7 +10,7 @@ interface ITopMenuProps extends RouteComponentProps<{}> {
 const styles = {
   root: {
     width: "100%",
-    zIndex: 1,
+    zIndex: 1
   }
 };
 
