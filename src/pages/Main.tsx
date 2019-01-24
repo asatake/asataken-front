@@ -1,15 +1,12 @@
 import * as React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { theme } from "../theme";
 import { MuiThemeProvider, Hidden } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
-import Top from "./Top";
-import Sounds from "./Sounds";
-import About from "./About";
-import Works from "./Works";
 import BottomMenu from "./BottomMenu";
 import SideMenu from "./SideMenu";
 import TopBar from "./TopBar";
+import Router from "../Router";
 import classNames from "classnames";
 
 interface IMenuProps {}
@@ -61,24 +58,6 @@ class Main extends React.Component<
     };
     this.changePage = this.changePage.bind(this);
     this.handleDrawer = this.handleDrawer.bind(this);
-    this.content = this.content.bind(this);
-  }
-
-  public content() {
-    const classes = this.props.classes;
-
-    return (
-      <div className={classes.content}>
-        <Route
-          exact={true}
-          path="/"
-          render={props => <Top changePage={this.changePage} />}
-        />
-        <Route path="/sounds" component={Sounds} />
-        <Route path="/works" component={Works} />
-        <Route path="/about" component={About} />
-      </div>
-    );
   }
 
   public title(location: string) {
@@ -109,7 +88,9 @@ class Main extends React.Component<
         <div style={{ marginTop: "5em", marginBottom: "5em" }}>
           <MuiThemeProvider theme={theme}>
             <Hidden mdUp={true}>
-              {this.content()}
+              <div className={classes.content}>
+                <Router changePage={this.changePage} />
+              </div>
               <TopBar title={this.title} />
               <BottomMenu item={this.state.item} changePage={this.changePage} />
             </Hidden>
@@ -120,7 +101,9 @@ class Main extends React.Component<
                   [classes.contentClose]: !this.state.open
                 })}
               >
-                {this.content()}
+                <div className={classes.content}>
+                  <Router changePage={this.changePage} />
+                </div>
               </div>
               <SideMenu
                 item={this.state.item}
