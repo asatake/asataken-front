@@ -11,7 +11,7 @@ import About from "../pages/About";
 configure({ adapter: new Adapter() });
 
 it("Top exists in routing", () => {
-  const changePage = jest.fn((e, v) => {});
+  const changePage = jest.fn();
   const wrapper = mount(
     <MemoryRouter initialEntries={["/"]}>
       <Router changePage={changePage} />
@@ -21,7 +21,7 @@ it("Top exists in routing", () => {
 });
 
 it("Sounds exists in routing", () => {
-  const changePage = jest.fn((e, v) => {});
+  const changePage = jest.fn();
   const wrapper = mount(
     <MemoryRouter initialEntries={["/sounds"]}>
       <Router changePage={changePage} />
@@ -31,7 +31,7 @@ it("Sounds exists in routing", () => {
 });
 
 it("Sounds exists in routing", () => {
-  const changePage = jest.fn((e, v) => {});
+  const changePage = jest.fn();
   const wrapper = mount(
     <MemoryRouter initialEntries={["/works"]}>
       <Router changePage={changePage} />
@@ -41,7 +41,7 @@ it("Sounds exists in routing", () => {
 });
 
 it("Sounds exists in routing", () => {
-  const changePage = jest.fn((e, v) => {});
+  const changePage = jest.fn();
   const wrapper = mount(
     <MemoryRouter initialEntries={["/about"]}>
       <Router changePage={changePage} />

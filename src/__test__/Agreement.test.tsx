@@ -1,9 +1,10 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { configure, shallow } from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import Agreement from "../components/Agreement";
 
+configure({ adapter: new Adapter() });
+
 it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<Agreement />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  shallow(<Agreement />);
 });
