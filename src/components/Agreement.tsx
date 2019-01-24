@@ -35,7 +35,7 @@ class Agreement extends React.Component {
       <div>
         <List component="ul">
           {rows.map((row, index) => (
-            <ListItem component="li">
+            <ListItem key={row.text} component="li">
               {row.icon}
               <ListItemText primary={row.text} />
             </ListItem>
