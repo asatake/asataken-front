@@ -14,9 +14,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_684ad3c7c302_key -iv $encrypted_684ad3c7c302_iv
   -in deploy_rsa.enc -out deploy_rsa -d
 - eval "$(ssh-agent -s)"
-after_success:
-- echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
-- curl --ftp-create-dirs
-       -T build/
-       --key /tmp/sftp_rsa
-       sftp://${SFTP_USER}:${SFTP_PASSWORD}@150.95.155.136/srv/www
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build ${SFTP_USER}@${SFTP_PASSWORD}:/srv/www
+  on:
+    branch: master
