@@ -17,6 +17,6 @@ before_install:
 after_success:
 - echo "${SFTP_KEY}" | base64 --decode >/tmp/sftp_rsa
 - curl --ftp-create-dirs
-       -T filename
+       -T build/
        --key /tmp/sftp_rsa
-       sftp://${SFTP_USER}:${SFTP_PASSWORD}@150.95.155.136/srv/www/
+       sftp://${SFTP_USER}:${SFTP_PASSWORD}@150.95.155.136/srv/www
