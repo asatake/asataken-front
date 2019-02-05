@@ -7,7 +7,7 @@ fatal() {
 
 # ssh command wrap
 remote() {
-  ssh -q -o "StrictHostKeyChecking no" -i deploy_rsa -l ${SFTP_USER} -p ${SFTP_PORT} www.asatake.com $@
+  ssh -q -o "StrictHostKeyChecking no" -i deploy_rsa -l -p ${SFTP_PORT} ${SFTP_USER}@www.asatake.com $@
 }
 
 [ -z "$SFTP_HOST" ] && fatal 'SFTP_HOST is not set'
