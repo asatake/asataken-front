@@ -3,6 +3,22 @@ node_js: '8'
 cache:
   directories:
   - node_modules
+env:
+  global:
+  - secure: HgoGT1qStSO2e2dRPdlrRB0QZVz76Pcc/cvAO5NrqI7SZjxCeijBc4dMr3Mbd6+t8sXnesFEIHiDQ4GQHjxk62ApYESENJflAHz0in6n+GdGBRr3icHllVtO44VW2HDA6xEuiRXvZXm48yrSTKgJJo28vw/APoOYMb3xUqnUqPXsLMM8lTdNLtoHjJJlglUfyR9kIooo/RiP0y2giOkcK/p/j+cw0hO8x67QfCDPkp+V1B7ydpQ8wtR1CEGTyjTWQ8mDBqB8/efI4ptnOhuzwm0d8ZETm6AHOjdu5Cr+aqTjlsk2bYY1nrFs+2BbNONg1KYhs0Bww3CzGlRcxN9mMIane7eTkowxYCMuD0L89pLkMxTXhGCOINHQ6XFHecFf3xCMkaIenSXowViygqcSccHtEWSrQ+ctsnR1hwAVg2IOtopIwkBtnOqzsXtayDOZxSMb8EL+wRKpCP/Km+/iQHpfDUiH0jDo9hQAcRTgCMjHznI6msiWbxaGpbOMSq+kxvSmdAhi2rIO1UVjo62gLyKChNuxLuG/ysffjW2nEf7p1NrVdtJ/VabdkP4q3Vyg6OeP7rhBe+LsxsLLiB5WYkmeoxRTKtaGabJY07AebVWXWAYJOnP5Q4GrvkwFznO8j01Ol98mAUyhR2I6crmDrG7ICBr+usUXWWKMqhagy/8=
+  - secure: IY5bZ91llXsETg/Y4C3gEOrn4giW1/rcm3ToWnAbc4pplC0Y/2YjuwOOI46Q6Rp6YbNbjC+PqXOoD7WeHLBHi5zFCpMhUpmfNgUZa0h3cbDlnA7v+h2fee8OEd3I6Pfdel3G+EkgsKrbKA+/yekjlQ0VR+NiJVLJdezhwTLfFY1m6OFrZBXWRlg3VCEJNR7RJtj8DLLPA4elzOqwB3u+e2/f7IbR0NGDcBULJ7tqJiig3q2TQYf36BlyIDeQbM+V6i6pROacx6QhCvBh6RxKs5po00MBeBatQ7ECQlvcnJzquYvFRO4Y4SZ6dxL8OqpLw0HF9WJadPN6vsWnYH/nCsttc5/S0iGfVhk+xl8MOcgAqUtkE60NKyoS/VevE3cGFIJTokjQ3tGlcxnxfF7Y9giDx2WJ9qlzECTqgy69dshB6dDDzcVSXZSTsLRfwSlQp3gyV0TqXTw0e/qD8JbAURwUlcrPQsGIkX9txUeZeKpj5SLU93tUCVLvmYGZPSlhUehvbarP7WxibckZ5CWVjoya16Iep78XkLmybFOdmNyKLDBaR2WQpIMUJotvA9409GS7H6gzE8lkoXZHSsD2rbxjGsvA81J38Gt3qz+RRzg4fvlR30Yw25v70nrjKwPvvvRrZYnQUVTXdOzolygrhDiG8ZmuPIe5KBmbVM+4dxs=
+  - secure: leS/K6MiZYnqFezV4yEYQWoi9eONY4SamYyWzX7wNFzVV7GvB4IRdPV65AXwNGvD1rXMJN0/S0rEtUGIrZ6mZor7oIuG9CkgXSlo90AssYrZC3gMiPXK6TCCnnGvIOREC86BtrpKzTf6jCfXHIFFso23glE2yS0ahPWKw5K8YI4UiaY5astYuNAvL28s/lMn3pYfdfcoMX9HfPBOopREXOIDCSIdSJ9Y1PdLnHYDw9WULcFnuGxzE62wvzJbmYwccKuMMoCER++YZ09XKEPDXZMXJUMY6XvXnZC8+PH9MPLhWVS+thOCoALl+2aThijL2JjOe6Hv6yjzD9e7mwO4CKfYpIDGpKilZmxnguEQOj2UnhjWMwB4QwFujV0Qw+Zd6WEF+WC8SwwcjXPYmjB0loPvrmmL2LEc7FPFX9YZW7C+8LV9gnKpd1TepaojeJh8sHf1MH5KNMs6fGd2lJ08ztVWoNoKG5BnoCu1XQMplx0cZ0KxBaMGlTyngQOeVIwnzzTtn1EdiyvJ5if7xlJ72tw3V5rSIz3aFH4vXUE5W5Qyo8bwEoLjCDLojbcOuO9RMWnWyrDmmOIXiH0yIj+14DWnlq16P4nXTX8Qeba0OGa0HaiHnr0Q3cEE9EP7ONmWfc5Bv6gYwlqn5lV5INgM+jkN+dsvK0/3GeEfqLU4Kog=
+deploy:
+  provider: script
+  script: rsync -auz -e 'ssh -p ${SCP_PORT} -o "StrictHostKeyChecking no"' -r --delete-after --quiet ${TRAVIS_BUILD_DIR}/build ${SCP_USER}@${SCP_HOST}:/srv/www/
+  on:
+    branch: develop
+before_install:
+- openssl aes-256-cbc -K $encrypted_f522af131703_key -iv $encrypted_f522af131703_iv
+  -in deploy_key.enc -out deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 deploy_key
+- ssh-add deploy_key
 script:
 - yarn test
-# - yarn build
+- yarn build
