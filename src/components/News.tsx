@@ -8,7 +8,7 @@ interface INewsState {}
 class News extends React.Component<INewsProps, INewsState> {
   public rows() {
     return [
-      { date: "2019/01/30", body: "サイトを開設しました。" }
+      { date: "2019/02/09", body: "サイトを開設し、Worksを更新しました。" }
     ];
   }
 
