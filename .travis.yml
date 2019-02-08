@@ -12,7 +12,7 @@ deploy:
   skip_cleanup: true
   provider: script
   script: rsync -auz -e 'ssh -p ${SCP_PORT} -o "StrictHostKeyChecking no"' -r --delete-after
-    --quiet ${TRAVIS_BUILD_DIR}/build ${SCP_USER}@${SCP_HOST}:/srv/www/
+    --quiet ${TRAVIS_BUILD_DIR}/build/ ${SCP_USER}@${SCP_HOST}:~/www/
   on:
     branch: master
 before_install:
