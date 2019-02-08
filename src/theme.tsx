@@ -1,14 +1,14 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { green, deepOrange } from "@material-ui/core/colors";
+import { green, indigo } from "@material-ui/core/colors";
 
 export const theme = createMuiTheme({
   palette: {
     type: "light",
     primary: {
-      main: green[800]
+      main: green[900]
     },
     secondary: {
-      main: deepOrange[800]
+      main: indigo.A700
     }
   },
   typography: {

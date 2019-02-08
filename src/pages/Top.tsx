@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Typography, Card, Divider, CardContent, Fab } from "@material-ui/core";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
-import { deepOrange } from "@material-ui/core/colors";
+import { indigo } from "@material-ui/core/colors";
 import { MusicNote } from "@material-ui/icons";
 import { withRouter, RouteComponentProps } from "react-router";
 import News from "../components/News";
@@ -18,7 +18,7 @@ const styles = {
   welcome: {
     marginBottom: "1em",
     marginTop: "0.5em",
-    backgroundColor: deepOrange[600]
+    backgroundColor: indigo[400]
   },
   subContent: {
     marginBottom: "1em",
