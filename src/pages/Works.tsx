@@ -3,15 +3,15 @@ import { Tabs, Tab, Card } from "@material-ui/core";
 import RequestWorks from "../components/RequestWorks";
 import Discography from "../components/Discography";
 
-interface IWorksProps {}
+interface Props {}
 
-interface IWorksState {
+interface State {
   tabItem: number;
   selected: number;
 }
 
-class Works extends React.Component<IWorksProps, IWorksState> {
-  constructor(props: IWorksProps) {
+class Works extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       tabItem: 0,

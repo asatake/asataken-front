@@ -29,11 +29,11 @@ const styles = {
   }
 };
 
-interface ITopProps extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{}> {
   changePage: (event: any, item: number) => void;
 }
 
-class Top extends React.Component<ITopProps & WithStyles<ClassName>, {}> {
+class Top extends React.Component<Props & WithStyles<ClassName>, {}> {
   public handleHistory(event: any, item: number) {
     if (item === 1) {
       this.props.history.push("/sounds");

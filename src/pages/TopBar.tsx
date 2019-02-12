@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { AppBar, Toolbar, Typography } from "@material-ui/core/";
 import { RouteComponentProps, withRouter } from "react-router";
 
-interface ITopMenuProps extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{}> {
   title: (location: string) => string;
 }
 
@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-class TopMenu extends React.Component<ITopMenuProps> {
+class TopMenu extends React.Component<Props> {
   public render() {
     return (
       <AppBar>

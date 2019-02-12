@@ -5,9 +5,9 @@ import SiteInfo from "../components/SiteInfo";
 import Profile from "../components/Profile";
 import Agreement from "../components/Agreement";
 
-interface IAboutProps {}
+interface Props {}
 
-interface IAboutState {
+interface State {
   tabItem: number;
 }
 
@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-class About extends React.Component<IAboutProps, IAboutState> {
+class About extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {

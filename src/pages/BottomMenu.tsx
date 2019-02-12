@@ -4,12 +4,12 @@ import { BottomNavigation, BottomNavigationAction } from "@material-ui/core/";
 import { Home, MusicNote, Work, Info } from "@material-ui/icons";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface IBottomMenuProps extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{}> {
   item: number;
   changePage: (event: any, item: number) => void;
 }
 
-interface IBottomMenuState {}
+interface State {}
 
 const styles = {
   root: {
@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-class BottomMenu extends React.Component<IBottomMenuProps, IBottomMenuState> {
+class BottomMenu extends React.Component<Props, State> {
   public handleHistory(event: any, item: number) {
     if (item === 1) {
       this.props.history.push("/sounds");

@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Card, Typography } from "@material-ui/core";
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface ISoundsProps extends RouteComponentProps<{}> {}
+interface Props extends RouteComponentProps<{}> {}
 
-class Sounds extends React.Component<ISoundsProps, {}> {
+class Sounds extends React.Component<Props, {}> {
   public render() {
     return (
       <div>

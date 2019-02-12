@@ -22,7 +22,7 @@ import {
 import classNames from "classnames";
 import { RouteComponentProps, withRouter } from "react-router";
 
-interface ISideMenuProps extends RouteComponentProps<{}> {
+interface Props extends RouteComponentProps<{}> {
   item: number;
   open: boolean;
   title: (location: string) => string;
@@ -30,7 +30,7 @@ interface ISideMenuProps extends RouteComponentProps<{}> {
   handleDrawer: () => void;
 }
 
-interface ISideMenuState {
+interface State {
   value: number;
 }
 
@@ -72,10 +72,7 @@ const styles = {
   }
 };
 
-class SideMenu extends React.Component<
-  ISideMenuProps & WithStyles<ClassNames>,
-  ISideMenuState
-> {
+class SideMenu extends React.Component<Props & WithStyles<ClassNames>, State> {
   public handleHistory(event: any, item: number) {
     if (item === 1) {
       this.props.history.push("/sounds");

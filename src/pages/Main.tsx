@@ -9,9 +9,9 @@ import TopBar from "./TopBar";
 import Router from "../Router";
 import classNames from "classnames";
 
-interface IMenuProps {}
+interface Props {}
 
-interface IMenuState {
+interface State {
   item: number;
   open: boolean;
 }
@@ -46,11 +46,8 @@ const styles = {
   }
 };
 
-class Main extends React.Component<
-  IMenuProps & WithStyles<ClassNames>,
-  IMenuState
-> {
-  constructor(props: IMenuProps & WithStyles<ClassNames>) {
+class Main extends React.Component<Props & WithStyles<ClassNames>, State> {
+  constructor(props: Props & WithStyles<ClassNames>) {
     super(props);
     this.state = {
       item: 0,
