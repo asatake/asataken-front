@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Navbar, Nav } from "react-bootstrap";
 
-function Layout(props) {
+function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div>
             <Navbar bg="dark" variant="dark" sticky="top">
@@ -33,7 +33,7 @@ function Layout(props) {
                 </Nav>
             </Navbar>
 
-            <div>{props.children}</div>
+            <div>{children}</div>
         </div>
     );
 }
