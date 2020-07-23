@@ -1,32 +1,27 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
-  },
-  "exclude": [
-    "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "src/setupTests.ts",
-    "coverage"
-  ]
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+        "esModuleInterop": true,
+        "allowJs": true,
+        "sourceMap": true,
+        "strict": true,
+        "noEmit": true,
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["./*"],
+            "@/*": ["./*"]
+        },
+        "types": ["@types/node"],
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+
+        "isolatedModules": true,
+        "jsx": "preserve"
+    },
+    "exclude": ["node_modules"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
