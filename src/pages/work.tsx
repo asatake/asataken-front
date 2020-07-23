@@ -6,7 +6,7 @@ function Work() {
         <Layout>
             <Container className="mt-4">
                 <h1>WORK</h1>
-                <p>準備中</p>
+                <h2>準備中です</h2>
             </Container>
         </Layout>
     );
