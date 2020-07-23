@@ -2,7 +2,6 @@
 set -euo pipefail
 
 ENVIRONMENT=${DEPLOY_ENV}
-APPLICATION=$1
 
 start_app() {
     npm run build

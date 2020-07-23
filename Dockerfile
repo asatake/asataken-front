@@ -1,5 +1,4 @@
 FROM node:12.18.2-alpine
-MAINTAINER Taketo Asai <asataken@gmail.com>
 
 RUN apk update
 
