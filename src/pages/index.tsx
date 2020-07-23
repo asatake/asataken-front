@@ -27,7 +27,7 @@ export default function Index() {
                         <Card.Title>News</Card.Title>
                         <ListGroup>
                             <ListGroup.Item>
-                                2020/xx/xx サイト開設 <Badge variant="info">New!</Badge>
+                                2020/07/24 サイト開設 <Badge variant="info">New!</Badge>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card.Body>
