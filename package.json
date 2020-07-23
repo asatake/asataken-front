@@ -1,45 +1,42 @@
 {
-  "name": "asatakecom-front",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^3.9.0",
-    "@material-ui/icons": "^3.0.2",
-    "@mdi/js": "^3.3.92",
-    "@mdi/react": "^1.1.0",
-    "@types/classnames": "^2.2.7",
-    "@types/enzyme": "^3.1.15",
-    "@types/enzyme-adapter-react-16": "^1.0.3",
-    "@types/react-router-dom": "^4.3.1",
-    "axios": "^0.18.0",
-    "classnames": "^2.2.6",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts-ts": "3.1.0",
-    "react-test-renderer": "^16.7.0"
-  },
-  "scripts": {
-    "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --coverage",
-    "eject": "react-scripts-ts eject"
-  },
-  "devDependencies": {
-    "@types/jest": "^23.3.12",
-    "@types/node": "^10.12.18",
-    "@types/react": "^16.7.18",
-    "@types/react-dom": "^16.0.11",
-    "typescript": "^3.2.2"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{ts,tsx}",
-      "!src/index.tsx",
-      "!src/theme.tsx",
-      "!src/registerServiceWorker.ts"
-    ]
-  }
+    "name": "asataken-front",
+    "version": "1.0.0",
+    "description": "asataken frontend",
+    "main": ".eslintrc.js",
+    "dependencies": {
+        "@zeit/next-css": "^1.0.1",
+        "babel-plugin-inline-react-svg": "^1.1.1",
+        "bootstrap": "^4.5.0",
+        "next": "^9.4.4",
+        "react": "^16.13.1",
+        "react-bootstrap": "^1.2.2",
+        "react-dom": "^16.13.1",
+        "react-icons": "^3.10.0",
+        "typescript": "^3.9.7"
+    },
+    "devDependencies": {
+        "@types/bootstrap": "^4.5.0",
+        "@types/node": "^14.0.24",
+        "@types/react": "^16.9.43",
+        "@types/react-bootstrap": "^1.0.1",
+        "eslint": "^7.5.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "prettier": "^2.0.5"
+    },
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/asatake/asataken-front.git"
+    },
+    "author": "asatake",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/asatake/asataken-front/issues"
+    },
+    "homepage": "https://github.com/asatake/asataken-front#readme"
 }
