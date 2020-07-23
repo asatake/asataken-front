@@ -23,7 +23,7 @@ env:
   GKE_CLUSTER: asataken
   IMAGE: frontend
   REGISTRY_HOSTNAME: gcr.io
-  DEPLOYMENT_NAME: frontend
+  DEPLOYMENT_NAME: frontend-1
 
 jobs:
   setup-build-publish-deploy:
