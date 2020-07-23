@@ -26,7 +26,7 @@ function Layout({ children }: { children: React.ReactNode }) {
                         </Link>
                     </Nav>
                     <Nav>
-                        <Link href="#">
+                        <Link href="/work">
                             <a className="nav-link">WORK</a>
                         </Link>
                     </Nav>
