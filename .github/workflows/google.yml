@@ -63,5 +63,5 @@ jobs:
     - name: Deploy
       run: |
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
-        kubectl set image deployment/${DEPLOYMENT_NAME} ${DEPLOYMENT_NAME}=$REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
+        kubectl set image deployment/${DEPLOYMENT_NAME} ${$IMAGE}=$REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$GITHUB_SHA
         kubectl get services -o wide
