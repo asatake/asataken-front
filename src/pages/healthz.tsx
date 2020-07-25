@@ -7,3 +7,5 @@ function Healthz() {
         </Layout>
     );
 }
+
+export default Healthz;
